@@ -9,7 +9,7 @@ function App() {
     <div className="animated-bg">
       <Container
         maxWidth="sm"
-        sx={{ minHeight: "100vh", bgcolor: "#f5f5f561", py: 5 }}
+        sx={{ minHeight: "100vh", bgcolor: "#f5f5f59b", py: 5 }}
       >
         <Paper
           elevation={4}
