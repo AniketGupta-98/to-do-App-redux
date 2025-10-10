@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addTodo } from '../features/toDoSlice';
-import { TextField, Button, Box } from '@mui/material';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../features/toDoSlice";
+import { TextField, Button, Box } from "@mui/material";
 
 const TodoForm = () => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!text.trim()) return;
     dispatch(addTodo(text));
-    setText('');
+    setText("");
   };
 
   return (
@@ -20,39 +20,52 @@ const TodoForm = () => {
       onSubmit={handleSubmit}
       display="flex"
       gap={2}
-      flexDirection={{ xs: 'column', sm: 'row' }}
+      flexDirection={{ xs: "column", sm: "row" }}
       alignItems="center"
       my={3}
     >
       <TextField
-        label="Enter a new task"
-        variant="outlined"
+        label="New task"
+        variant="filled"
         fullWidth
         value={text}
         onChange={(e) => setText(e.target.value)}
         sx={{
-          backgroundColor: '#fff',
+          backgroundColor: "rgba(255,255,255,0.9)",
           borderRadius: 2,
-          '& .MuiOutlinedInput-root': {
+          "& .MuiFilledInput-root": {
             borderRadius: 2,
+            boxShadow: "none",
+            "&:before, &:after": {
+              borderBottom: "none",
+            },
+          },
+          "& .MuiInputLabel-root": {
+            color: "green",
+          },
+          "& .MuiInputLabel-root.Mui-focused": {
+            color: "green",
+          },
+          "& .MuiFilledInput-input": {
+            color: "green",
           },
         }}
       />
       <Button
         type="submit"
         variant="contained"
-        color="primary"
+        color="secondary"
         sx={{
           px: 4,
           py: 1.5,
           borderRadius: 3,
-          boxShadow: 3,
-          textTransform: 'none',
-          fontWeight: 'bold',
-          transition: '0.3s',
-          '&:hover': {
-            backgroundColor: 'primary.dark',
-            transform: 'scale(1.03)',
+          boxShadow: 4,
+          textTransform: "none",
+          fontWeight: "bold",
+          transition: "transform 0.2s, background-color 0.2s",
+          "&:hover": {
+            backgroundColor: "secondary.dark",
+            transform: "scale(1.05)",
           },
         }}
       >
