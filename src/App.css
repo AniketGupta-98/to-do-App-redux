@@ -1,18 +1,103 @@
-.animated-bg {
-  min-height: 100vh;
-  background: linear-gradient(-45deg, #f8cdda, #1fa2ff, #a6ffcb, #fbc2eb);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
-@keyframes gradientBG {
+.jungle-bg {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #214b3c, #112a21); /* dark forest green to darker shade */
+  color: #f0fdf4;
+}
+
+.jungle-bg .stars {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: 0;
+  left: 0;
+  background: transparent;
+  pointer-events: none;
+  animation: moveStars 60s linear infinite;
+}
+
+.jungle-bg .stars:after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  box-shadow:
+    100px 100px #fff,
+    200px 300px #fff,
+    400px 150px #fff,
+    600px 400px #fff,
+    800px 200px #fff,
+    1000px 300px #fff,
+    1200px 100px #fff,
+    1400px 350px #fff,
+    1600px 250px #fff,
+    1800px 450px #fff,
+    2000px 300px #fff;
+  animation: twinkle 5s infinite alternate;
+}
+
+.jungle-bg .leaves {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+.jungle-bg .leaf {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background: url('./assets/Gleaf.png') no-repeat center / contain; /* you need a leaf SVG asset */
+  opacity: 0.8;
+  animation: driftLeaf linear infinite;
+}
+
+.jungle-bg .firefly {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 200, 0.8);
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(255, 255, 180, 0.8);
+  animation: flutter 8s ease-in-out infinite;
+}
+
+@keyframes moveStars {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-50%, -50%); }
+}
+
+@keyframes twinkle {
+  from { opacity: 0.2; }
+  to { opacity: 1; }
+}
+
+@keyframes driftLeaf {
   0% {
-    background-position: 0% 50%;
+    transform: translateX(-10vw) translateY(0) rotate(0deg);
+    opacity: 0;
   }
-  50% {
-    background-position: 100% 50%;
+  20% {
+    opacity: 0.6;
   }
   100% {
-    background-position: 0% 50%;
+    transform: translateX(110vw) translateY(100vh) rotate(45deg);
+    opacity: 0;
   }
+}
+
+@keyframes flutter {
+  0%, 100% { transform: translate(0,0) scale(1); opacity: 0.5; }
+  50% { transform: translate(20px, -10px) scale(1.3); opacity: 1; }
 }
