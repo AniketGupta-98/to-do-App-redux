@@ -11,7 +11,6 @@ import TodoForm from "./components/toDoForm";
 import TodoList from "./components/toDoList";
 import "./App.css";
 
-// 🍃 Generate random falling leaves
 function generateLeaves(count = 12) {
   const leaves = [];
   for (let i = 0; i < count; i++) {
@@ -27,7 +26,6 @@ function generateLeaves(count = 12) {
   return leaves;
 }
 
-// ✨ Generate floating fireflies
 function generateFireflies(count = 25) {
   const flies = [];
   for (let i = 0; i < count; i++) {
@@ -65,20 +63,9 @@ const theme = createTheme({
 function App() {
   return (
     <div className="jungle-bg">
-      {/* Sky & Stars */}
-      <div className="sky"></div>
-      <div className="stars" />
-
-      {/* Parallax Tree Layers */}
-      <div className="trees layer-back"></div>
-      <div className="trees layer-mid"></div>
-      <div className="trees layer-front"></div>
-
-      {/* Animated Leaves & Fireflies */}
+      <div className="forest-bg" />
       <div className="leaves">{generateLeaves(15)}</div>
       <div className="fireflies">{generateFireflies(25)}</div>
-
-      {/* Jungle To-Do App */}
       <ThemeProvider theme={theme}>
         <Container
           maxWidth="sm"
